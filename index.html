@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
+    <title>Local Storage</title>
+    <style>
+        *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        }
+
+        body{
+        background-color: rgb(199, 255, 253);
+        font-family: Nabla, Arial, Helvetica, sans-serif;
+        }
+
+        h1{
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 4rem;
+        }
+        .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 3rem;
+        }
+
+        .container textarea{
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        padding: 10px;
+        font-size: 18px;
+        font-weight: 500;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Auto Save Text !!</h1>
+        <div class="container">
+            <textarea id="text" cols="80" rows="15" placeholder="Start typing here...."></textarea>
+        </div>
+    </div>
+
+    <script>
+        let text = document.querySelector("#text");
+
+            if(localStorage.getItem("saveText")){
+                text.value = localStorage.getItem("saveText");
+            }
+
+        function saveToLocalStorage(keyword){
+            localStorage.setItem("saveText",keyword);
+        }
+
+        text.addEventListener("input",(event)=>{
+           const keyword = event.target.value;
+           saveToLocalStorage(keyword)
+        })
+    </script>
+</body>
+</html>
